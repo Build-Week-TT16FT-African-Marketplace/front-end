@@ -1,6 +1,10 @@
 import React from 'react';
-import {Route, Redirect } from 'react-router-dom'
+import {Route, Redirect, Link, Switch } from 'react-router-dom';
 import './App.css';
+import loginSchema from './validation/loginSchema';
+import signupSchema from './validation/signupSchema';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 import Landing from './components/Landing'
 import PrivateRoute from './components/PrivateRoute'
