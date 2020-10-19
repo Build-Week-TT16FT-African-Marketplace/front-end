@@ -1,3 +1,7 @@
+import React from 'react';
+import {Route, Redirect } from 'react-router-dom'
+import './App.css';
+
 import Landing from './components/Landing'
 import PrivateRoute from './components/PrivateRoute'
 import MainMarketPage from './components/MainMarketPage'
