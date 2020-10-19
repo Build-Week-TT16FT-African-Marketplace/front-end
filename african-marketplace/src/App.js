@@ -1,4 +1,5 @@
 import React from 'react';
+import NavigationBar from './components/NavigationBar'
 import {Route, Redirect } from 'react-router-dom'
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
   return (
     
     <div className="App">
+      <NavigationBar />
       <Route exact path="/">
         <Redirect to="/landing" />
       </Route>
