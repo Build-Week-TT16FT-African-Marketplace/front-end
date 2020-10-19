@@ -2,13 +2,10 @@
 import React from "react";
 //Styled components?
 
-
-//Initial form values, initial disabled should probably be written in App.js
-
-
 //Component Function
+//Initial values, initial disabled should come from App.js
 export default function Login(props){
-    //Pass Login(props), then destructure props here
+    //Pass Login(props), then destructuring props.
     const { values, submit, change, disabled, errors } = props;
    
     //Build out JSX
