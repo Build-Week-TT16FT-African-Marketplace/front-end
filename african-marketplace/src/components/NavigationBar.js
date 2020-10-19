@@ -12,7 +12,6 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
 const useStyles = makeStyles({
     list: {
       width: 250,
@@ -72,7 +71,7 @@ const NavigationBar = (user) => {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {['Home', 'About-Us', 'Meet-The-Team', 'Log-In'].map((text) => (
+          {['Home', 'About-Us', 'Meet-The-Team', 'Log-In', 'Signup'].map((text) => (
             <ListItem button key={text} component={Link} to={'/' + text}>
               <ListItemText primary={text} />
             </ListItem>
@@ -83,7 +82,6 @@ const NavigationBar = (user) => {
 
   return (
 <NavBar position="static">
-    <BrowserRouter>
 <LinkContainer variant='dense'>
     <Typography variant="h6" color="inherit">
         AFRICAN MARKETPLACE
@@ -104,12 +102,6 @@ const NavigationBar = (user) => {
     </Typography>
     </div>
   </LinkContainer>
-        <Switch>
-            <Route exact path="/" render={() => <div>Home Page</div>} />
-            <Route path="/MainMarketPage" render={() => <div> Page inbox</div>} />
-            {/* <Route path="/Starred" render={() => <div>Page starred</div>} /> */}
-        </Switch>
-  </BrowserRouter>
 </NavBar>
   );
 };

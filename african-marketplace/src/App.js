@@ -17,10 +17,21 @@ function App() {
       <Route exact path="/">
         <Redirect to="/landing" />
       </Route>
-      <Route path='/landing' component={Landing} />
-      <Route path ='/login' component={Login} />
-      <Route path ='/signup' component={Signup} />
       <PrivateRoute exact path="/market" component={MainMarketPage} />
+      <Route path ='/Login' component={Login} />
+      <Route path ='/Signup' component={Signup} />
+      <Route path='/Home' component={() => { 
+     window.location.href = 'https://marketing-pages-chi.vercel.app/index.html'; 
+     return null;
+}}/>
+      <Route path='/Meet-The-Team' component={() => { 
+     window.location.href = 'https://marketing-pages-chi.vercel.app/team.html'; 
+     return null;
+}}/>
+      <Route path='/About-Us' component={() => { 
+     window.location.href = 'https://marketing-pages-chi.vercel.app/about.html'; 
+     return null;
+}}/>
     </div>
   );
 }

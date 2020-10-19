@@ -6,8 +6,6 @@ import React from 'react';
 export default function Signup(props) {
 
 
-
-
   return (
     <form className='form-container'>
       <label>
