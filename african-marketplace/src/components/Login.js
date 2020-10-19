@@ -1,21 +1,80 @@
-//Import Statements
-import React from, { useState, useEffect } "react";
-//Styled components?
+///// IMPORT STATEMENTS /////
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import * as yup from "yup";
+import schema from "../validation/loginSchema";
+// Styled components?
 
-//Initial values. 
+// Initial values. 
+const initialLoginValues = {
+    email: "",
+    password: "",
+};
+const initialErrors = {
+    email: "",
+    password: "",
+};
 
-
-//Component Function
-//Initial errors, values, and disabled.
+///// MAIN FUNCTION /////
+// Initial errors, values, and disabled.
 function Login(){
-    //Initialize state for errors, values, and disabled. 
+    // Initialize state for errors, values, and disabled. 
+    const [loginValues, setLoginValues] = useState(initialLoginValues);
+    const [users, setUsers] = useState([]);
+    const [loginErrors, setLoginErrors] = useState(initialErrors);
+    const [disabled, setDisabled] = useState(true)
+    
+    ///// HELPERS /////
+    const postNewUser = (newUser) => {
+        axios
+            .post("URL", newUser)
+            .then((response) => {
+                setUsers([response.data, ...users]);
+                setLoginValues(initialLoginValues);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
-    //Create helper functions and side effects.
+    ///// EVENT HANDLERS /////
+    // Input change.
+    const onChange = (name, value) => {
+        yup 
+            .reach(schema, name)
+            .validate(value)
+            .then(() => {
+                setLoginErrors({
+                    ...loginErrors,
+                    [name]: "",
+                });
+            })
+            .catch((error) => {
+                setLoginErrors({
+                    ...loginErrors, 
+                    [name]: error.errors[0],
+                });
+            });
+        
+        setLoginValues({
+            ...loginValues,
+            [name]: value,
+        });
+    };
 
-    //Event handlers?
+    // Input submit.
+    const onSubmit = () => {
+        const newUser = {
+            email: loginValues.email.trim(),
+            password: loginValues.password.trim(),
+        };
+        postNewUser(newUser);
+    };
 
-    //Build out JSX
-    //Add onSubmit={submit} to <form>, onChange={change} to <input>'s.
+    ///// SIDE EFFECTS /////
+
+    // Build out JSX
+    // Add onSubmit={submit} to <form>, onChange={change} to <input>'s.
     return (
         <form className="loginForm">
             <h3>Please sign in to view your account.</h3>
@@ -46,4 +105,4 @@ function Login(){
 export default Login;
 
 
-//Create a separate file so that components render? f
+// Create a separate file so that components render on screen?
