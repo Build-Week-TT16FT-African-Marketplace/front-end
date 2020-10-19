@@ -6,6 +6,7 @@ import Landing from './components/Landing'
 import PrivateRoute from './components/PrivateRoute'
 import MainMarketPage from './components/MainMarketPage'
 import Login from './components/Login'
+import Signup from './components/Signup'
 
 function App() {
   return (
