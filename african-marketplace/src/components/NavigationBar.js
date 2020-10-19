@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
