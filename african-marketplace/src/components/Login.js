@@ -1,5 +1,5 @@
 //Import Statements
-import react from "react";
+import React from "react";
 //Styled components?
 
 
@@ -7,12 +7,36 @@ import react from "react";
 
 
 //Component Function
-export default function Login(){
+export default function Login(props){
     //Pass Login(props), then destructure props here
-
-    //Temporary onSubmit, write this and onChange in App.js
-    
+    const { values, submit, change, disabled, errors } = props;
    
     //Build out JSX
-    return null;
+    //Come back and add onSubmit={submit} to <form>, onChange={change} to <input>'s
+    //Don't forget to build onChange/onSubmit in App.js. 
+    return (
+        <form className="loginForm">
+            <h3>Please sign in to view your account.</h3>
+
+            <label> Email: 
+                <input
+                    name="email"
+                    type="email"
+                    value={values.email}
+                    // onChange={change}
+                />
+            </label>
+
+            <label> Password: 
+                <input
+                    name="password"
+                    type="password"
+                    value={values.password}
+                    // onChange={change}
+                />
+            </label>
+
+            <button disabled={disabled}>Login</button>
+        </form>
+    );
 };
