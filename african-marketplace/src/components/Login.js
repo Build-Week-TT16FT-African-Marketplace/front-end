@@ -72,19 +72,23 @@ function Login(){
     };
 
     ///// SIDE EFFECTS /////
+    useEffect(() => {
+        schema.isValid(loginValues).then((valid) => {
+            setDisabled(!valid);
+        })
+    }, [loginValues]);
 
-    // Build out JSX
-    // Add onSubmit={submit} to <form>, onChange={change} to <input>'s.
+    ///// FORM /////
     return (
-        <form className="loginForm">
+        <form className="loginForm" onSubmit={onSubmit}>
             <h3>Please sign in to view your account.</h3>
 
             <label> Email: 
                 <input
                     name="email"
                     type="email"
-                    value={values.email}
-                    // onChange={change}
+                    value={loginValues.email}
+                    onChange={onChange}
                 />
             </label>
 
@@ -92,8 +96,8 @@ function Login(){
                 <input
                     name="password"
                     type="password"
-                    value={values.password}
-                    // onChange={change}
+                    value={loginValues.password}
+                    onChange={onChange}
                 />
             </label>
 
