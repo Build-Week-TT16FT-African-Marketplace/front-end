@@ -54,12 +54,12 @@ const getUsers = () => {
 };
 
 const postNewSignup = (newSignup) => {
-console.log('new signup', newSignup);
 setSignups([ newSignup, ...signups]);
 setFormValues(initialFormValues);
 console.log('signups', signups);
-signups.push(newSignup);
-console.log('updated signups', signups);
+// signups.push(newSignup);
+console.log('newsignup push', signups)
+
 
   axiosWithAuth()
   .post('auth/register', newSignup)
@@ -112,7 +112,7 @@ useEffect(() => {
 
 useEffect(() => {
   schema.isValid(formValues).then((valid) => {
-    setDisabled(valid);
+    setDisabled(!valid);
   });
 },
 [ formValues ])
