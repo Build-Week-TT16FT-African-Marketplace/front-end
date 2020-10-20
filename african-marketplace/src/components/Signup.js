@@ -61,7 +61,7 @@ console.log('signups', signups);
 console.log('newsignup push', signups)
 
 
-  Axios()
+  Axios
   .post("https://african-marketplace-back-end.herokuapp.com/auth/register", newSignup)
   .then((res) => {
     setSignups([ res.data, ...signups ]);
