@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import schema from '../validation/signupSchema';
 import * as yup from 'yup';
 import Axios from 'axios';
+import useHistory from 'react-router-dom'
 
 
 const initialFormValues = {
@@ -22,6 +23,8 @@ const initialUsers = [];
 const initialDisabled = true;
 
 function Signup(props) {
+
+  const { push } = useHistory();
 
   const [ signups, setSignups ] = useState(initialUsers);
   const [ formValues, setFormValues ] = useState(initialFormValues);
@@ -67,6 +70,7 @@ console.log('newsignup push', signups)
     setSignups([ res.data, ...signups ]);
     console.log('Account Successfully Created:', res.data)
     setFormValues(initialFormValues);
+    push('/Login')
   })
   .catch((err) => {
     console.log(err)
