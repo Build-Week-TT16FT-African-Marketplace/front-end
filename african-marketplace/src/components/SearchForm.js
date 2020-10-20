@@ -1,6 +1,33 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import Button from "@material-ui/core/Button";
+
+
+export default function SearchForm () {
+    return(
+        <div className="searchBar">
+        <form>
+            <Autocomplete 
+                freeSolo="true"
+                id="autocomplete"
+                autoSelect="true"
+                // replace testProduce
+                options={testProduce.filter((option) => option.name)}
+                renderInput={params => (
+                    <TextField {...params} 
+                    label="freeSolo" 
+                    margin="normal" 
+                    variant="outlined"
+                    InputProps={{ ...params.InputProps, type: "search"}}
+                    />
+                )}
+            />
+            <Button variant="contained" type="submit">Search</Button>
+        </form>
+    </div>
+    )
+};
 
 //remove test data later
 const testProduce = [
@@ -35,20 +62,3 @@ const testProduce = [
         user_id: "userId"
     }
 ];
-
-function SearchForm () {
-return(
-    <div style={{ width: 300}}>
-        <Autocomplete 
-            id="search"
-            // replace testProduce
-            options={testProduce.map((option) => option.name)}
-            renderInput={(params) => (
-                <TextField {...params} label="search" margin="normal" variant="outlined"/>
-            )}
-        />
-    </div>
-    )
-};
-
-export default SearchForm;
