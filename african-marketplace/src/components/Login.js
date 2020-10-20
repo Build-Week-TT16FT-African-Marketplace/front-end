@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import schema from "../validation/loginSchema";
+import useHistory from 'react-router-dom'
 // Styled components?
 
 // Initial values. 
@@ -18,6 +19,9 @@ const initialErrors = {
 ///// MAIN FUNCTION /////
 // Initial errors, values, and disabled.
 function Login(){
+
+    const { push } = useHistory();
+
     // Initialize state for errors, values, and disabled. 
     const [loginValues, setLoginValues] = useState(initialLoginValues);
     const [users, setUsers] = useState([]);
@@ -33,6 +37,7 @@ function Login(){
                 setUsers([newUser, ...users]);
                 setLoginValues(initialLoginValues);
                 window.localStorage.setItem('token', res.data.token)
+                push('/Market')
             })
             .catch((error) => {
                 console.log("Unsuccessful Login:", error);
