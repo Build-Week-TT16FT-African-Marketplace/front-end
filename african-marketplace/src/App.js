@@ -15,9 +15,9 @@ function App() {
     <div className="App">
       <NavigationBar />
       <Route exact path="/">
-        <Redirect to="/landing" />
+        <Redirect to="/market" />
       </Route>
-      <PrivateRoute exact path="/market" component={MainMarketPage} />
+      <PrivateRoute exact path="/Market" component={MainMarketPage} />
       <Route path ='/Login' component={Login} />
       <Route path ='/Signup' component={Signup} />
       <Route path='/Home' component={() => { 

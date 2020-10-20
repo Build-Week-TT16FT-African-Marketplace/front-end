@@ -12,12 +12,18 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider'
+
 const useStyles = makeStyles({
     list: {
       width: 250,
     },
     fullList: {
       width: 'auto',
+    },
+    drawerPaper: {
+      backgroundColor: '#21B2A6',
+      color: '#ffffff'
     },
   });
 
@@ -71,7 +77,7 @@ const NavigationBar = (user) => {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {['Home', 'About-Us', 'Meet-The-Team', 'Login', 'Signup'].map((text) => (
+          {['Home', 'About-Us', 'Meet-The-Team', 'Market', 'Login', 'Signup'].map((text) => (
             <ListItem button key={text} component={Link} to={'/' + text}>
               <ListItemText primary={text} />
             </ListItem>
@@ -79,6 +85,8 @@ const NavigationBar = (user) => {
         </List>
       </div>
     );
+
+    const { drawerPaper } = useStyles();
 
   return (
 <NavBar position="static">
@@ -94,7 +102,7 @@ const NavigationBar = (user) => {
     {['right'].map((anchor) => (
       <React.Fragment key={anchor}>
         <Button style={{color: 'white'}} onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
-        <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+        <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)} classes={{ paper: drawerPaper }}>
           {list(anchor)}
         </Drawer>
       </React.Fragment>
