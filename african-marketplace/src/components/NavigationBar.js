@@ -71,7 +71,7 @@ const NavigationBar = (user) => {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {['Home', 'About-Us', 'Meet-The-Team', 'Log-In', 'Signup'].map((text) => (
+          {['Home', 'About-Us', 'Meet-The-Team', 'Login', 'Signup'].map((text) => (
             <ListItem button key={text} component={Link} to={'/' + text}>
               <ListItemText primary={text} />
             </ListItem>
