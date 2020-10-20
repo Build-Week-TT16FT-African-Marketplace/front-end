@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import schema from '../validation/signupSchema';
 import * as yup from 'yup';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 
 const initialFormValues = {
@@ -60,15 +61,16 @@ console.log('signups', signups);
 signups.push(newSignup);
 console.log('updated signups', signups);
 
-  // axios
-  // .post('sample', newSignup)
-  // .then((res) => {
-  //   setSignups([ res.data, ...signups ]); *****Check res.data?
-  //   setFormValues(initialFormValues);
-  // })
-  // .catch((err) => {
-  //   console.log(err)
-  // });
+  axiosWithAuth()
+  .post('auth/register', newSignup)
+  .then((res) => {
+    // setSignups([ res.data, ...signups ]);
+    console.log('Account Successfully Created:', res.data)
+    setFormValues(initialFormValues);
+  })
+  .catch((err) => {
+    console.log(err)
+  });
 };
 
 const formSubmit = () => {
