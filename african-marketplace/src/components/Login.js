@@ -7,11 +7,11 @@ import schema from "../validation/loginSchema";
 
 // Initial values. 
 const initialLoginValues = {
-    email: "",
+    username: "",
     password: "",
 };
 const initialErrors = {
-    email: "",
+    username: "",
     password: "",
 };
 
@@ -71,7 +71,7 @@ function Login(){
     const onSubmit = (e) => {
         e.preventDefault(); // added by steven
         const newUser = {
-            email: loginValues.email.trim(),
+            username: loginValues.username.trim(),
             password: loginValues.password.trim(),
         };
         postNewUser(newUser);
@@ -89,11 +89,11 @@ function Login(){
         <form className="loginForm" onSubmit={onSubmit}>
             <h3>Please sign in to view your account.</h3>
 
-            <label> Email: 
+            <label> Username: 
                 <input
-                    name="email"
-                    type="email"
-                    value={loginValues.email}
+                    name="username"
+                    type="string"
+                    value={loginValues.username}
                     onChange={onChange}
                 />
             </label>

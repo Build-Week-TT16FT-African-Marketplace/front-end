@@ -5,21 +5,21 @@ import Axios from 'axios';
 
 
 const initialFormValues = {
-  firstname: '',
-  lastname: '',
-  email: '',
+  // firstname: '',
+  // lastname: '',
+  username: '',
   password: '',
+  department: ''
 }
+
 const initialFormErrors = {
-  firstname: '',
-  lastname: '',
-  email: '',
+  // firstname: '',
+  // lastname: '',
+  username: '',
   password: '',
 }
 const initialUsers = [];
 const initialDisabled = true;
-
-
 
 function Signup(props) {
 
@@ -57,7 +57,7 @@ const postNewSignup = (newSignup) => {
 setSignups([ newSignup, ...signups]);
 setFormValues(initialFormValues);
 console.log('signups', signups);
-// signups.push(newSignup);
+signups.push(newSignup);
 console.log('newsignup push', signups)
 
 
@@ -75,10 +75,11 @@ console.log('newsignup push', signups)
 
 const formSubmit = () => {
   const newSignup = {
-    firstname: formValues.firstname.trim(),
-    lastname: formValues.lastname.trim(),
-    email: formValues.email.trim(),
+    // firstname: formValues.firstname.trim(),
+    // lastname: formValues.lastname.trim(),
+    username: formValues.username.trim(),
     password: formValues.password.trim(),
+    department: formValues.department.trim(),
   };
   postNewSignup(newSignup)
 }
@@ -120,7 +121,7 @@ useEffect(() => {
 
   return (
     <form className='form-container' onSubmit={onSubmit}>
-      <label>
+      {/* <label>
         First Name
         <input
         type='text'
@@ -139,13 +140,13 @@ useEffect(() => {
         onChange={onChange}
         >
         </input>
-      </label>
+      </label> */}
       <label>
-        Email
+        Username
         <input
-        type='email'
-        name='email'
-        value={formValues.email}
+        type='text'
+        name='username'
+        value={formValues.username}
         onChange={onChange}
         >
         </input>
@@ -159,6 +160,24 @@ useEffect(() => {
         onChange={onChange}
         >
         </input>
+      </label>
+      <label>
+      <div>
+        <input 
+        type="radio" 
+        value='buyer'
+        checked={formValues.department === 'buyer'} 
+        name="department"
+        onChange={onChange}
+        /> Buyer
+
+        <input type="radio" 
+        value='seller'
+        checked={formValues.department === 'seller'} 
+        name="department" 
+        onChange={onChange}
+        /> Seller
+      </div>
       </label>
 
       <button
