@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 export const FETCH_ITEMS_DATA = "FETCH_ITEMS_DATA";
 export const FETCH_ITEMS_DATA_SUCCESS = "FETCH_ITEMS_DATA_SUCCESS";
@@ -22,10 +22,9 @@ export const fetchItems = () => {
   };
 };
 
-export const addProduct = (item) => {
-  return (dispatch) => {
+export const addProduct = (formValues) => (dispatch) => {
     axiosWithAuth()
-      .post(`/items/additem`, item)
+      .post(`/items/additem`, formValues)
       .then((res) => {
         dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data });
       })
@@ -33,12 +32,10 @@ export const addProduct = (item) => {
         dispatch({ type: ADD_ITEM_ERROR, payload: err });
       });
   };
-};
 
-export const updateProduct = (id, data) => {
-  return (dispatch) => {
+export const updateProduct = (id, formValues) => (dispatch) => {
     axiosWithAuth()
-      .put(`/items/${id}`, data)
+      .put(`/items/${id}`, formValues)
       .then((res) => {
         res.data.id = parseInt(res.data.id);
         dispatch({ type: UPDATE_ITEM_SUCCESS, payload: res.data });
@@ -47,4 +44,3 @@ export const updateProduct = (id, data) => {
         dispatch({ type: UPDATE_ITEM_ERROR, payload: err });
       });
   };
-};
