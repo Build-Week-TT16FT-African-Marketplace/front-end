@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import schema from "../validation/loginSchema";
-import useHistory from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 // Styled components?
 
 // Initial values. 
