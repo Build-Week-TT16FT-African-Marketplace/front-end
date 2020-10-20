@@ -19,8 +19,9 @@ const PostItem = () => {
 
 //Comment
     return (
-      <div></div>
         <div>
+          <div></div>
+      <div></div>
           <form onSubmit={handleSubmit}>
             <div >
               <TextField
