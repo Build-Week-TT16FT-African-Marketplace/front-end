@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
-import { updateProduct, fetchItems } from '../ReduxStore/actions/fetchItemsAction'
+import NewItem from './NewItem'
 
 const initFormVals = {
 	name: '',
