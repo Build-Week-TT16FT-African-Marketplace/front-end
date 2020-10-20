@@ -1,20 +1,19 @@
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+export {
+  FETCH_USER_DATA,
+  FETCH_USER_DATA_SUCCESS,
+  FETCH_USER_DATA_ERROR,
+  fetchUserData,
+} from "./fetchUserDataAction";
 
-export const FETCH_DATA = "FETCH_DATA";
-export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
-export const FETCH_DATA_ERROR = "FETCH_DATA_ERROR";
-
-export const fetchThings = () => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_DATA });
-    axiosWithAuth()
-      .get("")
-      .then((res) => {
-        console.log(res.data);
-        dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data.data });
-      })
-      .catch((err) => {
-        dispatch({ type: FETCH_DATA_ERROR, payload: err });
-      });
-  };
-};
+export {
+  FETCH_ITEMS_DATA,
+  FETCH_ITEMS_DATA_SUCCESS,
+  FETCH_ITEMS_DATA_ERROR,
+  fetchItems,
+  ADD_ITEM_SUCCESS,
+  ADD_ITEM_ERROR,
+  addProduct,
+  UPDATE_ITEM_SUCCESS,
+  UPDATE_ITEM_ERROR,
+  updateProduct,
+} from "./fetchItemsAction";
