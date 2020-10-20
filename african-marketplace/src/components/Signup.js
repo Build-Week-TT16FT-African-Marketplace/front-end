@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import schema from '../validation/signupSchema';
 import * as yup from 'yup';
-import axiosWithAuth from '../utils/axiosWithAuth'
+import Axios from 'axios';
 
 
 const initialFormValues = {
@@ -61,10 +61,10 @@ console.log('signups', signups);
 console.log('newsignup push', signups)
 
 
-  axiosWithAuth()
-  .post('auth/register', newSignup)
+  Axios()
+  .post("https://african-marketplace-back-end.herokuapp.com/auth/register", newSignup)
   .then((res) => {
-    // setSignups([ res.data, ...signups ]);
+    setSignups([ res.data, ...signups ]);
     console.log('Account Successfully Created:', res.data)
     setFormValues(initialFormValues);
   })
