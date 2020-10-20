@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
-
-import axiosWithAuth from '../utils/axiosWithAuth'
+import { connect } from "react-redux";
+import { updateProduct, fetchItems } from '../ReduxStore/actions/fetchItemsAction'
 
 const initFormVals = {
-    id: null,
 	name: '',
 	description: '',
-	price: null,
+	price: '',
 	location: '',
 	category: '',
-	URL: '',
-	user_id: null
 }
 
 const UpdateItem = (props) => {
@@ -20,10 +17,8 @@ const UpdateItem = (props) => {
 	const [modalStyle] = useState(getModalStyle);
 	const [itemData, setItemData] = useState(initFormVals);
 	const [itemId, setItemId] = useState(null);
-    axiosWithAuth()
-    .post(`/items/${item.id}`, itemData)
-    .then(res => console.log("Item updated:", res))
-	.catch(err => console.log("Could not be updated", err))
+	
+
 	
 	const handleOpen = (e) => {
 		const title = props.data.name;

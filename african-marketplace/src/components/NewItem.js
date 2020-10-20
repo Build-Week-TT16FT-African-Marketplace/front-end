@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useSelector, useEffect } from "react";
 import axiosWithAuth from "../utlis/axiosWithAuth";
+import { connect } from "react-redux";
+import { addProduct, fetchItems, updateProduct } from '../ReduxStore/actions/fetchItemsAction'
 
 import TextField from "@material-ui/core/TextField";
 
@@ -15,12 +17,10 @@ const initFormVals = {
 const NewItem = (props) => {
   const [formVal, setFormVal] = useState(initFormVals);
 
-  // const user = useSelector(state => state.user)
   useEffect(() => {
-    if (props.postData) {
-      setFormVal(props.postData);
-    }
-  }, [props]);
+    props.fetchItems();
+    console.log("test");
+  }, [isClicked]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,30 +30,17 @@ const NewItem = (props) => {
     if (props) {
       // Edit item
       const itemId = props.itemId;
-      axiosWithAuth()
-        .put(`/items/${itemId}`, data)
-        .then((res) => {
-          if (res.statusText === "Accepted") {
-            console.log(res);
-            window.location = "/market";
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        props.updateProduct(itemId);
     } else {
       // Create a new item listing
       data.user_id = id;
-      axiosWithAuth()
-        .post(`/items/additem`, data)
-        .then((res) => {
-            //set item to global storage
-            console.log(res)
-        })
-        .catch((err) => {
-          setFormVal(initFormVals);
-          console.log(err);
-        });
+      props.addProduct(formVal)
+    }
+    props.updateProduct(formVal);
+    if (isClicked === false) {
+      setClicked(true);
+    } else {
+      setClicked(false);
     }
   };
   const handleChanges = (e) => {
@@ -64,6 +51,7 @@ const NewItem = (props) => {
         ...formVal,
         [name]: value,
       });
+    console.log("These are the new form values:", formVal);
   }
   
   return (
@@ -123,4 +111,11 @@ const NewItem = (props) => {
   );
 };
 
-export default NewItem;
+const mapStateToProps = (state) => {
+    return {
+      forSale: state.forSale,
+      newItem: state.newItem
+    };
+  };
+  
+  export default connect(mapStateToProps, { addProduct, fetchItems, updateProduct })(NewItem);
