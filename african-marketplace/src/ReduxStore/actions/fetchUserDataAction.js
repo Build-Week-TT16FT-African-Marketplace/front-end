@@ -8,7 +8,7 @@ export const fetchUserData = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_USER_DATA });
     axiosWithAuth()
-    .get('/api/users')
+    .get('/users')
     .then(res => {
       dispatch({ type: FETCH_USER_DATA_SUCCESS, payload: res.data.data });
     })
