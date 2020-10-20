@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <NavigationBar />
       <Route exact path="/">
-        <Redirect to="/market" />
+        <Redirect to="/Home" />
       </Route>
       <PrivateRoute exact path="/Market" component={MainMarketPage} />
       <Route path ='/Login' component={Login} />
