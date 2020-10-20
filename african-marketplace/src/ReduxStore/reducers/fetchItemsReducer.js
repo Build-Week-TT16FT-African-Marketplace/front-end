@@ -9,6 +9,13 @@ import {
 
 const initialState = {
   forSale: [],
+  newItem: {
+    name: '',
+    description: '',
+    price: '',
+    location: '',
+    category: '',
+  },
   isLoading: false,
   error: "",
 };
@@ -34,6 +41,7 @@ export const fetchItems = (state = initialState, action) => {
     case ADD_ITEM_SUCCESS:
       return {
         forSale: [action.payload, ...state.forSale],
+        newItem: action.payload,
         error: "",
       };
 
