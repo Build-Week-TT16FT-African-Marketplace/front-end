@@ -27,19 +27,24 @@ function Login(){
     ///// HELPERS /////
     const postNewUser = (newUser) => {
         axios
-            .post("URL", newUser)
-            .then((response) => {
-                setUsers([response.data, ...users]);
+            .post("https://african-marketplace-back-end.herokuapp.com/auth/login", newUser)
+            .then((res) => {
+                console.log("Successful Login:", res.data)
+                setUsers([newUser, ...users]);
                 setLoginValues(initialLoginValues);
+                window.localStorage.setItem('token', res.data.token)
             })
             .catch((error) => {
-                console.log(error);
+                console.log("Unsuccessful Login:", error);
             });
     }
 
     ///// EVENT HANDLERS /////
     // Input change.
-    const onChange = (name, value) => {
+    const onChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
         yup 
             .reach(schema, name)
             .validate(value)
@@ -63,7 +68,8 @@ function Login(){
     };
 
     // Input submit.
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault(); // added by steven
         const newUser = {
             email: loginValues.email.trim(),
             password: loginValues.password.trim(),
