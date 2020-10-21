@@ -24,7 +24,7 @@ import Button from "@material-ui/core/Button";
     }
 
     return(
-        <div style={{ width: 300}}>
+        <div>
         <form onSubmit={onSubmit}>
             <TextField 
                 label="Search"
