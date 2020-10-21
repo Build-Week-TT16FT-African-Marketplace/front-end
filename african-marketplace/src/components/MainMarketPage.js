@@ -24,7 +24,7 @@ const [ items, setItems ] = useState([])
 return (
     <div>
         <h1>Welcome! Browse products here:</h1>
-        {/* <SearchForm /> */}
+        <SearchForm />
         <NewItem />
             {items.map((content) => {
                 // console.log('map', content.id, index);
