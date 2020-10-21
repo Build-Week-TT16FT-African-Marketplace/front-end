@@ -3,6 +3,8 @@ import schema from '../validation/signupSchema';
 import * as yup from 'yup';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom'
+import styles from './components-styles/Signup.css'
+import TextField from "@material-ui/core/TextField";
 
 
 const initialFormValues = {
@@ -126,72 +128,86 @@ useEffect(() => {
 
 
   return (
-    <form className='form-container' onSubmit={onSubmit}>
-      {/* <label>
-        First Name
-        <input
-        type='text'
-        name='firstname'
-        value={formValues.firstname}
-        onChange={onChange}
-        >
-        </input>
-      </label>
-      <label>
-        Last Name
-        <input
-        type='text'
-        name='lastname'
-        value={formValues.lastname}
-        onChange={onChange}
-        >
-        </input>
-      </label> */}
-      <label>
-        Username
-        <input
-        type='text'
-        name='username'
-        value={formValues.username}
-        onChange={onChange}
-        >
-        </input>
-      </label>
-      <label>
-        Password
-        <input
-        type='text'
-        name='password'
-        value={formValues.password}
-        onChange={onChange}
-        >
-        </input>
-      </label>
-      <label>
-      <div>
-        <input 
-        type="radio" 
-        value='buyer'
-        checked={formValues.department === 'buyer'} 
-        name="department"
-        onChange={onChange}
-        /> Buyer
+    <section className='signup-section'>
+      <form className='signup-form' onSubmit={onSubmit}>
+        <h2>Sign Up</h2>
+        <hr className='signup-hr' />
 
-        <input type="radio" 
-        value='seller'
-        checked={formValues.department === 'seller'} 
-        name="department" 
-        onChange={onChange}
-        /> Seller
-      </div>
-      </label>
 
-      <button
-      disabled={disabled}
-      >
-        Create Account
-      </button>
-    </form>
+
+        <div className='textForm-containers'>
+          {/* <label className='signup-label-text'>
+            Username
+            <input
+            type='text'
+            name='username'
+            value={formValues.username}
+            onChange={onChange}
+            >
+            </input>
+          </label> */}
+          <TextField
+            className='signup-textform'
+            variant="outlined"
+            name="username"
+            value={formValues.username}
+            placeholder="Username"
+            onChange={onChange}
+          />
+
+          {/* <label className='signup-label-text'>
+            Password
+            <input
+            type='text'
+            name='password'
+            value={formValues.password}
+            onChange={onChange}
+            >
+            </input>
+          </label> */}
+          <TextField
+            className='signup-textform'
+            variant="outlined"
+            name="password"
+            value={formValues.password}
+            placeholder="Password"
+            onChange={onChange}
+          /> <br /> <br />
+        </div>
+
+
+
+        <label className='radio-label'>
+          <div className='radio-container'>
+            <input 
+            className='signup-radio'
+            type="radio" 
+            value='buyer'
+            checked={formValues.department === 'buyer'} 
+            name="department"
+            onChange={onChange}
+            /> Buyer
+
+            <input 
+            className='signup-radio'
+            type="radio" 
+            value='seller'
+            checked={formValues.department === 'seller'} 
+            name="department" 
+            onChange={onChange}
+            /> Seller
+          </div>
+        </label>
+
+
+        <button className='signup-button'
+        disabled={disabled}
+        >
+          Create Account
+        </button>
+
+      </form>
+    </section>
 
 
   )
