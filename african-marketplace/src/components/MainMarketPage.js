@@ -14,7 +14,6 @@ const MainMarketPage = () => {
             .then((res) => {
                 console.log('data', res.data[0]);
                 setItems([res.data[0]]);
-                // items.push(res.data[0])
             })
             .catch((err) => {
                 console.log('Error found: ', err)
@@ -31,7 +30,15 @@ return (
            
             {items.map((content, index) => {
                 // console.log('map', content.id, index);
-                return (<Item key={index} content={content} />)
+                return (<Item 
+                        key={index} 
+                        name={content.name}
+                        description={content.description} 
+                        price={content.price} 
+                        location={content.location} 
+                        category={content.category}  
+                        iid={content.id}
+                        />)
             })}
 
     </div>
