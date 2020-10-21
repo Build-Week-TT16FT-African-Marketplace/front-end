@@ -1,77 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux'
-import axiosWithAuth from '../utils/axiosWithAuth'
+import { addProduct } from '../ReduxStore/actions/fetchItemsAction'
 
-//
-import {
-ADD_ITEM_START,
-ADD_ITEM_SUCCESS,
-ADD_ITEM_ERROR
-} from '../ReduxStore/actions/fetchItemsAction'
-
-//
-// import { connect } from "react-redux";
-// import { addProduct, fetchItems, updateProduct } from '../ReduxStore/actions/fetchItemsAction'
 
 import TextField from "@material-ui/core/TextField";
 
 const initFormVals = { 
-    item_title: '', 
-    item_description: '', 
-    item_price: '', 
-    item_location: '', 
-    item_category: '', 
+    name: '', 
+    description: '', 
+    price: '', 
+    location: '', 
+    category: '', 
 };
 
 const NewItem = (props) => {
   const [formVal, setFormVal] = useState(initFormVals);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   props.fetchItems();
-  //   console.log("test");
-  // }, [isClicked]);
-
-  useEffect(() => {
-    if(props.itemData) {
-      setFormVal(props.itemData)
-    }
-    console.log("test");
-  }, [props]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: ADD_ITEM_START })
-    const id = window.localStorage.getItem("uid");
+    // const id = window.localStorage.getItem("uid");
     const data = formVal;
+    console.log('this is the data:', data)
+    dispatch(addProduct(data, setFormVal, initFormVals));
 
-    if (props) {
-      // Edit item
-      const itemId = props.itemId;
-       axiosWithAuth()
-        .put(`/items/${itemId}`, data)
-        .then(res => {
-          if (res.statusText === "Accepted") {
-            console.log(res);
-            window.location = '/market'
-          }
-        })
-        .catch( err => console.log(err))
-    } else {
-      data.uid = id;
-      axiosWithAuth()
-      .post(`/items`, data)
-      .then( res => {
-        dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data })
-      })
-      .catch( err => {
-        dispatch({ type: ADD_ITEM_ERROR })
-        setFormVal(initFormVals)
-        console.log(err)
-      })
     }
-  }
 
   const handleChanges = (e) => {
     e.persist();
@@ -89,9 +43,9 @@ const NewItem = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <TextField
-            name="item_title"
+            name="name"
             onChange={handleChanges}
-            value={formVal.item_title}
+            value={formVal.name}
             id="outlined-basic"
             label="Item Name"
             variant="outlined"
@@ -102,32 +56,32 @@ const NewItem = (props) => {
             multiline
             rows={6}
             variant="outlined"
-            name="item_description"
-            value={formVal.item_description}
+            name="description"
+            value={formVal.description}
             placeholder="Item Description"
             onChange={handleChanges}
           />  <br /> <br />
 
         <TextField
             variant="outlined"
-            name="item_price"
-            value={formVal.item_price}
+            name="price"
+            value={formVal.price}
             placeholder="Item Price"
             onChange={handleChanges}
           /> <br /> <br />
 
         <TextField
             variant="outlined"
-            name="item_location"
-            value={formVal.item_location}
+            name="location"
+            value={formVal.location}
             placeholder="Seller Location"
             onChange={handleChanges}
           /> <br /> <br />
 
         <TextField
             variant="outlined"
-            name="item_category"
-            value={formVal.item_category}
+            name="category"
+            value={formVal.category}
             placeholder="Item Category"
             onChange={handleChanges}
           /> <br /> <br />
@@ -142,12 +96,3 @@ const NewItem = (props) => {
 };
 
 export default NewItem;
-
-// const mapStateToProps = (state) => {
-//     return {
-//       forSale: state.forSale,
-//       newItem: state.newItem
-//     };
-//   };
-  
-//   export default connect(mapStateToProps, { addProduct, fetchItems, updateProduct })(NewItem);

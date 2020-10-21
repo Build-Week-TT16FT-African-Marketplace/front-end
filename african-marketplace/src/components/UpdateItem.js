@@ -29,11 +29,11 @@ const UpdateItem = (props) => {
 
 	
 		setItemData({ 
-			item_title: title, 
-			item_description: description, 
-			item_price: price, 
-			item_location: location, 
-			item_category: category, 
+			name: title, 
+			description: description, 
+			price: price, 
+			location: location, 
+			category: category, 
 		});
 		setItemId(itemId);
 		setOpen(true);
