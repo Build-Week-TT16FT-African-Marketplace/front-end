@@ -42,6 +42,7 @@ function Login(){
         setUsers([newUser, ...users]);
         setLoginValues(initialLoginValues);
         window.localStorage.setItem("token", res.data.token);
+        push('/Market')
       })
       .catch((error) => {
         console.log("Unsuccessful Login:", error);
