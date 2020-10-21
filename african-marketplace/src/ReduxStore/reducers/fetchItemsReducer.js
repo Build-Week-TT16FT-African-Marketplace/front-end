@@ -40,9 +40,14 @@ export const fetchItems = (state = initialState, { type, payload }) => {
         ...initialState,
         error: payload,
       };
+      case ADD_ITEM_START:
+        console.log(state.forSale)
+        return {
+          ...state,
+        };
 
     case ADD_ITEM_SUCCESS:
-      console.log(state.forSale)
+      console.log(payload)
       return {
         ...state,
         forSale: [payload, ...state.forSale],
