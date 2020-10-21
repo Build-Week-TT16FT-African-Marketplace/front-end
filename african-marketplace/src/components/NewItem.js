@@ -131,20 +131,6 @@ const NewItem = (props) => {
             placeholder="Item Category"
             onChange={handleChanges}
           /> <br /> <br />
-                  <TextField
-            variant="outlined"
-            name="item_url"
-            value={formVal.item_URL}
-            placeholder="test purpose only"
-            onChange={handleChanges}
-          /> <br /> <br />
-                  <TextField
-            variant="outlined"
-            name="item_id"
-            value={formVal.item_id}
-            placeholder="testpurposeonly"
-            onChange={handleChanges}
-          /> <br /> <br />
         </div>
 
         <button type="submit">

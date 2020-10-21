@@ -12,8 +12,8 @@ const [ items, setItems ] = useState([])
         axiosWithAuth()
         .get('/items')
         .then((res) => {
-            console.log('data', res.data[0]);
-            setItems([res.data[0]]);
+            console.log('data', res.data);
+            setItems(res.data);
         })
         .catch((err) => {
             console.log('Error found: ', err)
