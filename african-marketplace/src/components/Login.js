@@ -29,22 +29,6 @@ function Login(){
     const [users, setUsers] = useState([]);
     const [loginErrors, setLoginErrors] = useState(initialErrors);
     const [disabled, setDisabled] = useState(true)
-    
-    ///// HELPERS /////
-    const postNewUser = (newUser) => {
-        axios
-            .post("https://african-marketplace-back-end.herokuapp.com/auth/login", newUser)
-            .then((res) => {
-                console.log("Successful Login:", res.data)
-                setUsers([newUser, ...users]);
-                setLoginValues(initialLoginValues);
-                window.localStorage.setItem('token', res.data.token)
-                push('/Market')
-            })
-            .catch((error) => {
-                console.log("Unsuccessful Login:", error);
-            });
-    }
 
   ///// HELPERS /////
   const postNewUser = (newUser) => {
