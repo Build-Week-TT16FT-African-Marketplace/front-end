@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider'
+// import Divider from '@material-ui/core/Divider'
 
 const useStyles = makeStyles({
     list: {
@@ -40,17 +40,17 @@ const LinkContainer = withStyles ({
       }
 })(Toolbar);
 
-const NavLink = withStyles ({
-  root: {
-    margin: '0 10% 0 3%',
-    fontSize: '1.3em',
-    color: 'white',
-    textDecoration: 'none',
-      "&:hover": {
-        color: 'white',
-      }
-  },
-})(Link);
+// const NavLink = withStyles ({
+//   root: {
+//     margin: '0 10% 0 3%',
+//     fontSize: '1.3em',
+//     color: 'white',
+//     textDecoration: 'none',
+//       "&:hover": {
+//         color: 'white',
+//       }
+//   },
+// })(Link);
 
 const NavigationBar = (user) => {
 
