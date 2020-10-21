@@ -70,6 +70,8 @@ console.log('newsignup push', signups)
     setSignups([ res.data, ...signups ]);
     console.log('Account Successfully Created:', res.data)
     setFormValues(initialFormValues);
+    window.localStorage.setItem("username", res.data.username);
+    window.localStorage.setItem("uid", res.data.id);
     push('/Login')
   })
   .catch((err) => {

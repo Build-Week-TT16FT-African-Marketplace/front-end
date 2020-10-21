@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Modal from "@material-ui/core/Modal";
-import { makeStyles } from "@material-ui/core/styles";
 import NewItem from './NewItem'
+
+// import { makeStyles } from "@material-ui/core/styles";
 
 const initFormVals = {
 	name: '',
@@ -53,5 +54,15 @@ const UpdateItem = (props) => {
 		</>
 	  );
 }
+
+function getModalStyle() {
+	const top = 50 + Math.round(Math.random() * 20) - 10;
+	const left = 50 + Math.round(Math.random() * 20) - 10;
+	return {
+	  top: `${top}%`,
+	  left: `${left}%`,
+	  transform: `translate(-${top}%, -${left}%)`,
+	};
+  }
 
 export default UpdateItem;

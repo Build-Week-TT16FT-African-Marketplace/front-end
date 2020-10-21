@@ -1,8 +1,18 @@
 import React from "react";
-import { useState, useSelector, useEffect } from "react";
-import axiosWithAuth from "../utlis/axiosWithAuth";
-import { connect } from "react-redux";
-import { addProduct, fetchItems, updateProduct } from '../ReduxStore/actions/fetchItemsAction'
+import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux'
+import axiosWithAuth from '../utils/axiosWithAuth'
+
+//
+import {
+ADD_ITEM_START,
+ADD_ITEM_SUCCESS,
+ADD_ITEM_ERROR
+} from '../ReduxStore/actions/fetchItemsAction'
+
+//
+// import { connect } from "react-redux";
+// import { addProduct, fetchItems, updateProduct } from '../ReduxStore/actions/fetchItemsAction'
 
 import TextField from "@material-ui/core/TextField";
 
@@ -16,33 +26,53 @@ const initFormVals = {
 
 const NewItem = (props) => {
   const [formVal, setFormVal] = useState(initFormVals);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   props.fetchItems();
+  //   console.log("test");
+  // }, [isClicked]);
 
   useEffect(() => {
-    props.fetchItems();
+    if(props.itemData) {
+      setFormVal(props.itemData)
+    }
     console.log("test");
-  }, [isClicked]);
+  }, [props]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = window.localStorage.getItem("user_id");
+    dispatch({ type: ADD_ITEM_START })
+    const id = window.localStorage.getItem("uid");
     const data = formVal;
 
     if (props) {
       // Edit item
       const itemId = props.itemId;
-        props.updateProduct(itemId);
+       axiosWithAuth()
+        .put(`/items/${itemId}`, data)
+        .then(res => {
+          if (res.statusText === "Accepted") {
+            console.log(res);
+            window.location = '/market'
+          }
+        })
+        .catch( err => console.log(err))
     } else {
-      // Create a new item listing
-      data.user_id = id;
-      props.addProduct(formVal)
+      data.uid = id;
+      axiosWithAuth()
+      .post(`/items`, data)
+      .then( res => {
+        dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data })
+      })
+      .catch( err => {
+        dispatch({ type: ADD_ITEM_ERROR })
+        setFormVal(initFormVals)
+        console.log(err)
+      })
     }
-    props.updateProduct(formVal);
-    if (isClicked === false) {
-      setClicked(true);
-    } else {
-      setClicked(false);
-    }
-  };
+  }
+
   const handleChanges = (e) => {
     e.persist();
     const name = e.target.name;
@@ -63,44 +93,58 @@ const NewItem = (props) => {
             onChange={handleChanges}
             value={formVal.item_title}
             id="outlined-basic"
-            label="(Post Title Here)"
+            label="Item Name"
             variant="outlined"
-          />
+          /> <br /> <br />
 
           <TextField
-            label="description"
+            label="Description"
             multiline
             rows={6}
             variant="outlined"
             name="item_description"
             value={formVal.item_description}
-            placeholder="(Post item description Here)"
+            placeholder="Item Description"
             onChange={handleChanges}
-          />
+          />  <br /> <br />
 
         <TextField
             variant="outlined"
             name="item_price"
             value={formVal.item_price}
-            placeholder="(Post item price Here)"
+            placeholder="Item Price"
             onChange={handleChanges}
-          />
+          /> <br /> <br />
 
         <TextField
             variant="outlined"
             name="item_location"
             value={formVal.item_location}
-            placeholder="(Post seller location Here)"
+            placeholder="Seller Location"
             onChange={handleChanges}
-          />
+          /> <br /> <br />
 
         <TextField
             variant="outlined"
             name="item_category"
             value={formVal.item_category}
-            placeholder="(Post item category Here)"
+            placeholder="Item Category"
             onChange={handleChanges}
-          />
+          /> <br /> <br />
+                  <TextField
+            variant="outlined"
+            name="item_url"
+            value={formVal.item_URL}
+            placeholder="test purpose only"
+            onChange={handleChanges}
+          /> <br /> <br />
+                  <TextField
+            variant="outlined"
+            name="item_id"
+            value={formVal.item_id}
+            placeholder="testpurposeonly"
+            onChange={handleChanges}
+          /> <br /> <br />
         </div>
 
         <button type="submit">
@@ -111,11 +155,13 @@ const NewItem = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-    return {
-      forSale: state.forSale,
-      newItem: state.newItem
-    };
-  };
+export default NewItem;
+
+// const mapStateToProps = (state) => {
+//     return {
+//       forSale: state.forSale,
+//       newItem: state.newItem
+//     };
+//   };
   
-  export default connect(mapStateToProps, { addProduct, fetchItems, updateProduct })(NewItem);
+//   export default connect(mapStateToProps, { addProduct, fetchItems, updateProduct })(NewItem);
