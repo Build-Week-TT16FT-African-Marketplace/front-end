@@ -43,7 +43,7 @@ const NewItem = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: ADD_ITEM_START })
-    const id = window.localStorage.getItem("user_id");
+    const id = window.localStorage.getItem("uid");
     const data = formVal;
 
     if (props) {
@@ -59,7 +59,7 @@ const NewItem = (props) => {
         })
         .catch( err => console.log(err))
     } else {
-      data.user_id = id;
+      data.uid = id;
       axiosWithAuth()
       .post(`/items`, data)
       .then( res => {
@@ -93,44 +93,58 @@ const NewItem = (props) => {
             onChange={handleChanges}
             value={formVal.item_title}
             id="outlined-basic"
-            label="(Post Title Here)"
+            label="Item Name"
             variant="outlined"
-          />
+          /> <br /> <br />
 
           <TextField
-            label="description"
+            label="Description"
             multiline
             rows={6}
             variant="outlined"
             name="item_description"
             value={formVal.item_description}
-            placeholder="(Post item description Here)"
+            placeholder="Item Description"
             onChange={handleChanges}
-          />
+          />  <br /> <br />
 
         <TextField
             variant="outlined"
             name="item_price"
             value={formVal.item_price}
-            placeholder="(Post item price Here)"
+            placeholder="Item Price"
             onChange={handleChanges}
-          />
+          /> <br /> <br />
 
         <TextField
             variant="outlined"
             name="item_location"
             value={formVal.item_location}
-            placeholder="(Post seller location Here)"
+            placeholder="Seller Location"
             onChange={handleChanges}
-          />
+          /> <br /> <br />
 
         <TextField
             variant="outlined"
             name="item_category"
             value={formVal.item_category}
-            placeholder="(Post item category Here)"
+            placeholder="Item Category"
             onChange={handleChanges}
-          />
+          /> <br /> <br />
+                  <TextField
+            variant="outlined"
+            name="item_url"
+            value={formVal.item_URL}
+            placeholder="test purpose only"
+            onChange={handleChanges}
+          /> <br /> <br />
+                  <TextField
+            variant="outlined"
+            name="item_id"
+            value={formVal.item_id}
+            placeholder="testpurposeonly"
+            onChange={handleChanges}
+          /> <br /> <br />
         </div>
 
         <button type="submit">
