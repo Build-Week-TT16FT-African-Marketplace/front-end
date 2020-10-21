@@ -4,6 +4,7 @@ import axios from "axios";
 import * as yup from "yup";
 import schema from "../validation/loginSchema";
 import { connect } from "react-redux";
+import { useHistory } from 'react-router-dom'
 // Styled components?
 
 // Initial values.
@@ -18,13 +19,32 @@ const initialErrors = {
 
 ///// MAIN FUNCTION /////
 // Initial errors, values, and disabled.
-function Login(props) {
-  console.log(props);
-  // Initialize state for errors, values, and disabled.
-  const [loginValues, setLoginValues] = useState(initialLoginValues);
-  const [users, setUsers] = useState([]);
-  const [loginErrors, setLoginErrors] = useState(initialErrors);
-  const [disabled, setDisabled] = useState(true);
+
+function Login(){
+
+    const { push } = useHistory();
+
+    // Initialize state for errors, values, and disabled. 
+    const [loginValues, setLoginValues] = useState(initialLoginValues);
+    const [users, setUsers] = useState([]);
+    const [loginErrors, setLoginErrors] = useState(initialErrors);
+    const [disabled, setDisabled] = useState(true)
+    
+    ///// HELPERS /////
+    const postNewUser = (newUser) => {
+        axios
+            .post("https://african-marketplace-back-end.herokuapp.com/auth/login", newUser)
+            .then((res) => {
+                console.log("Successful Login:", res.data)
+                setUsers([newUser, ...users]);
+                setLoginValues(initialLoginValues);
+                window.localStorage.setItem('token', res.data.token)
+                push('/Market')
+            })
+            .catch((error) => {
+                console.log("Unsuccessful Login:", error);
+            });
+    }
 
   ///// HELPERS /////
   const postNewUser = (newUser) => {

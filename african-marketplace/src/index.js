@@ -7,13 +7,19 @@ import { Provider } from "react-redux";
 import combineReducer from "./ReduxStore/reducers";
 import { createStore, applyMiddleware } from "redux";
 
-const store = createStore(combineReducer);
+import reducer from "./ReduxStore/reducers/index"
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { logger } from "redux-logger";
+import thunk from "redux-thunk";
+
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
+  <Router>
+    <Provider store={store}>
       <App />
-    </Router>
-  </Provider>,
-  document.getElementById("root")
+    </Provider>
+  </Router>,
+  document.getElementById('root')
 );
