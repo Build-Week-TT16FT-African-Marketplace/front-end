@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import NewItem from "./NewItem";
 import { connect } from "react-redux";
-import { updateProduct } from "../store/actions";
+import { updateProduct } from "../ReduxStore/actions";
 
 // import { makeStyles } from "@material-ui/core/styles";
 
@@ -67,8 +67,8 @@ function getModalStyle() {
 
 const mapStateToProps = (state) => {
   return {
-    forSale: state.fetchForSale.forSale,
-    product: state.fetchForSale.product,
+    forSale: state.fetchItems.forSale,
+    product: state.fetchItems.product,
   };
 };
 
