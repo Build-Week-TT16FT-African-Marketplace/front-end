@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth';
 import Item from './Item';
 import NewItem from './NewItem'
+import SearchForm from "./SearchForm"
 
 const MainMarketPage = () => {
 
@@ -23,6 +24,7 @@ const [ items, setItems ] = useState([])
 return (
     <div>
         <h1>Welcome! Browse products here:</h1>
+        <SearchForm />
         <NewItem />
             {items.map((content) => {
                 // console.log('map', content.id, index);

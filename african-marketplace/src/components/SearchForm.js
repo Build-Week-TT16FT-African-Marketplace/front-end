@@ -4,10 +4,16 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import Button from "@material-ui/core/Button";
 
 
-export default function SearchForm () {
+ function SearchForm () {
+
+     const onSubmit = (event) => {
+        event.preventDefault();
+    }
+
     return(
-        <div className="searchBar">
-        <form>
+        <div style={{ width: 300}}>
+        <form onSubmit={onSubmit}>
+            
             <Autocomplete 
                 freeSolo="true"
                 id="autocomplete"
@@ -16,7 +22,7 @@ export default function SearchForm () {
                 options={testProduce.filter((option) => option.name)}
                 renderInput={params => (
                     <TextField {...params} 
-                    label="freeSolo" 
+                    label="Search" 
                     margin="normal" 
                     variant="outlined"
                     InputProps={{ ...params.InputProps, type: "search"}}
@@ -29,6 +35,7 @@ export default function SearchForm () {
     )
 };
 
+export default SearchForm;
 //remove test data later
 const testProduce = [
     {
