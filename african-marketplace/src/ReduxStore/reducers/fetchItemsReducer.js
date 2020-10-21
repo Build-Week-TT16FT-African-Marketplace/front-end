@@ -6,8 +6,8 @@ import {
   ADD_ITEM_SUCCESS,
   ADD_ITEM_ERROR,
   UPDATE_ITEM_SUCCESS,
-  DEL_POST, 
-  DEL_POST_SUCCESS,
+  DEL_ITEM_START, 
+  DEL_ITEM_SUCCESS,
 } from "../actions";
 
 const initialState = {
@@ -69,21 +69,21 @@ export const fetchItems = (state = initialState, { type, payload }) => {
         ...state,
         forSale: [payload, ...state.forSale],
       };
-      case DEL_POST_SUCCESS:
-        return {
-          ...state,
-          user: {
-            ...state.user,
-            forSale: state.user.items.map((list) => {
-              if (list.id === payload.id) {
-                const newList = list.items.filter(function (item) {
-                  return item.name !== payload.name;
-                });
-                return newList;
-              } else return list;
-            }),
-          },
-        };
+      // case DEL_ITEM_SUCCESS:
+      //   return {
+      //     ...state,
+      //     user: {
+      //       ...state.user,
+      //       forSale: state.user.items.map((list) => {
+      //         if (list.id === payload.id) {
+      //           const newList = list.items.filter(function (item) {
+      //             return item.name !== payload.name;
+      //           });
+      //           return newList;
+      //         } else return list;
+      //       }),
+      //     },
+      //   };
 
     default:
       return state;
