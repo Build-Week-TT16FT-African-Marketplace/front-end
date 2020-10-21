@@ -4,25 +4,32 @@ import Button from "@material-ui/core/Button";
 
 
  function SearchForm (items) {
-    const {name, location, id} = items;
 
-    const [filter, setFilter] = useState("");
+     const [search, setSearch] = useState("")
+
+    if( search !== "" && items.location.toLowerCase().filter( search.toLowerCase() )){
+        return null;
+    }
+
+    // const filteredItems = items.filter( item => {
+    //     return item.name.toLowerCase().indexOf( search.toLowerCase() )
+    // })
 
     const handleSearchChange = (event) => {
-        setFilter(event.target.value);
+        setSearch(event.target.value);
     };
     
     const onSubmit = (event) => {
         event.preventDefault();
     }
 
-    items.name.includes(filter) && setFilter(items.id)
     return(
         <div style={{ width: 300}}>
         <form onSubmit={onSubmit}>
             <TextField 
                 label="Search"
                 onChange={handleSearchChange}
+                variant="outlined"
             />
             <Button variant="contained" type="submit">Search</Button>
         </form>
