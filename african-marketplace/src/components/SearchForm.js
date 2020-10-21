@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 
+
+
  function SearchForm (items) {
 
      const [search, setSearch] = useState("")
@@ -10,10 +12,6 @@ import Button from "@material-ui/core/Button";
     if( search !== "" && items.location.toLowerCase().filter( search.toLowerCase() )){
         return null;
     }
-
-    // const filteredItems = items.filter( item => {
-    //     return item.name.toLowerCase().indexOf( search.toLowerCase() )
-    // })
 
     const handleSearchChange = (event) => {
         setSearch(event.target.value);
