@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  users: [],
+  users: ["nunya", "bidness"],
   isLoading: false,
   error: "",
 };

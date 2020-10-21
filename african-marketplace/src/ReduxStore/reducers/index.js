@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { fetchUserData } from "./fetchUserDataReducer";
+import { fetchUserData } from "./fetchUserReducer";
 import { fetchItems } from "./fetchItemsReducer";
 
 export default combineReducers({

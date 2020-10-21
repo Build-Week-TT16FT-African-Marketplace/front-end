@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 export const FETCH_ITEMS_DATA = "FETCH_ITEMS_DATA";
 export const FETCH_ITEMS_DATA_SUCCESS = "FETCH_ITEMS_DATA_SUCCESS";
@@ -12,7 +12,7 @@ export const fetchItems = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_ITEMS_DATA });
     axiosWithAuth()
-      .get("/api/items")
+      .get("/items")
       .then((res) => {
         dispatch({ type: FETCH_ITEMS_DATA_SUCCESS, payload: res.data });
       })
@@ -25,7 +25,7 @@ export const fetchItems = () => {
 export const addProduct = (item) => {
   return (dispatch) => {
     axiosWithAuth()
-      .post("/api/items", item)
+      .post("/items/additem", item)
       .then((res) => {
         dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data });
       })
@@ -38,7 +38,7 @@ export const addProduct = (item) => {
 export const updateProduct = (id, data) => {
   return (dispatch) => {
     axiosWithAuth()
-      .patch(`/api/items/:${id}`, data)
+      .put(`/items/:${id}`, data)
       .then((res) => {
         res.data.id = parseInt(res.data.id);
         dispatch({ type: UPDATE_ITEM_SUCCESS, payload: res.data });
