@@ -1,0 +1,13 @@
+.item h3, .item h4, .item p {
+  margin: 0;
+}
+
+
+.item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+}
