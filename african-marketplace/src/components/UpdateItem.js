@@ -27,33 +27,33 @@ const UpdateItem = (props) => {
     const price = props.data.price;
     const location = props.data.location;
     const category = props.data.category;
-
-    setItemData({
-      item_title: title,
-      item_description: description,
-      item_price: price,
-      item_location: location,
-      item_category: category,
-    });
-    setItemId(itemId);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <>
-      <button onClick={handleOpen}>Edit</button>
-      <Modal open={open} onClose={handleClose}>
-        <div style={modalStyle}>
-          <NewItem itemData={itemData} itemId={itemId} />
-        </div>
-      </Modal>
-    </>
-  );
-};
+	
+		setItemData({ 
+			name: title, 
+			description: description, 
+			price: price, 
+			location: location, 
+			category: category, 
+		});
+		setItemId(itemId);
+		setOpen(true);
+	  };
+	
+	  const handleClose = () => {
+		setOpen(false);
+	  };
+	
+	  return (
+		<>
+		  <button onClick={handleOpen}>Edit</button>
+		  <Modal open={open} onClose={handleClose}>
+			<div style={modalStyle}>
+			  <NewItem itemData={itemData} itemId={itemId} />
+			</div>
+		  </Modal>
+		</>
+	  );
+}
 
 function getModalStyle() {
   const top = 50 + Math.round(Math.random() * 20) - 10;
