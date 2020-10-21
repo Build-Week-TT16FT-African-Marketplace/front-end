@@ -176,36 +176,35 @@ useEffect(() => {
         </div>
 
 
+        <div className='radio-container'>
+          <label className='radio-label'>
+            <span class='checkmark'></span>
+              <input 
+              className='signup-radio'
+              type="radio" 
+              value='buyer'
+              checked={formValues.department === 'buyer'} 
+              name="department"
+              onChange={onChange}
+              /> Buyer
+              
+            <span class='checkmark'></span>
+              <input 
+              className='signup-radio'
+              type="radio" 
+              value='seller'
+              checked={formValues.department === 'seller'} 
+              name="department" 
+              onChange={onChange}
+              /> Seller
+          </label>
+        </div>
 
-        <label className='radio-label'>
-          <div className='radio-container'>
-            <input 
-            className='signup-radio'
-            type="radio" 
-            value='buyer'
-            checked={formValues.department === 'buyer'} 
-            name="department"
-            onChange={onChange}
-            /> Buyer
-
-            <input 
-            className='signup-radio'
-            type="radio" 
-            value='seller'
-            checked={formValues.department === 'seller'} 
-            name="department" 
-            onChange={onChange}
-            /> Seller
-          </div>
-        </label>
-
-
-        <button className='signup-button'
-        disabled={disabled}
-        >
-          Create Account
-        </button>
-
+        <div>
+          <button className='signup-button'disabled={disabled}>
+            Create Account
+          </button>
+        </div>
       </form>
     </section>
 
