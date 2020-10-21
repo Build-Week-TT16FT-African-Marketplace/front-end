@@ -17,6 +17,6 @@ export {
   UPDATE_ITEM_SUCCESS,
   UPDATE_ITEM_ERROR,
   updateProduct,
-  DEL_POST, 
-  DEL_POST_SUCCESS,
+  DEL_ITEM_START, 
+  DEL_ITEM_SUCCESS,
 } from "./fetchItemsAction";
