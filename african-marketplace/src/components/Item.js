@@ -4,22 +4,19 @@ import React from 'react';
 const Item = (props) => {
 
 const { name, description, price, location } = props;
-
-console.log('name', name);
+// console.log('name', props.content.name);
 
 return (
   <div className='item-container'>
     <div className='item'>
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <h4>${price}</h4>
-      <h4>${location}</h4>
+      <h3>{props.content.name}</h3>
+      <p>{props.content.description}</p>
+      <h4>${props.content.price}</h4>
+      <h4>{props.content.location}</h4>
     </div>
   </div>
 
 )
-
-
 }
 
 
