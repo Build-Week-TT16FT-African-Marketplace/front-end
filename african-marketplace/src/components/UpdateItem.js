@@ -52,6 +52,7 @@ const UpdateItem = (props) => {
       const data = formVal;
       console.log('this is the data:', data)
       updateProduct( cid, data );
+      setOpen(false)
       }
   
     const handleChanges = (e) => {
@@ -117,7 +118,7 @@ const UpdateItem = (props) => {
           /> <br /> <br />
         </div>
 
-        <button type="submit">
+        <button type="submit" >
           Submit
         </button>
       </form>
