@@ -206,8 +206,8 @@ useEffect(() => {
           </label>
         </div>
 
-        <div>
-          <button className='signup-button' disabled={disabled}>
+        <div className='button-container'>
+          <button className='login-button' disabled={disabled}>
             Create Account
           </button>
         </div>
