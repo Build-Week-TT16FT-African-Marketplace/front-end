@@ -4,6 +4,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import Item from './Item';
 import NewItem from './NewItem'
 import SearchForm from "./SearchForm"
+import UpdateItem from './UpdateItem';
 
 const MainMarketPage = () => {
 

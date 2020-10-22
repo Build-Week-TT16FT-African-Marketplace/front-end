@@ -14,7 +14,7 @@ return (
       <h3>{props.location}</h3>
       <h3>{props.category}</h3>
       <DeleteItem cid={props.cid} />
-      <UpdateItem data={props} />
+      <UpdateItem cid = {props.cid} data={props} />
   </div>
 
 )
