@@ -9,6 +9,7 @@ import UpdateItem from './UpdateItem';
 const MainMarketPage = () => {
 
 const [ items, setItems ] = useState([])
+const [searched, setSearched] = useState([]);
 
     useEffect(() => {
         axiosWithAuth()
@@ -22,11 +23,16 @@ const [ items, setItems ] = useState([])
         })
     }, []);
 
+    const toggleSearch = (items) => {
+        setSearched(items);
+      };
+
 return (
     <div>
         <h1>Welcome! Browse products here:</h1>
-        <NewItem />
-            {items.map((content) => {
+        <NewItem /> <br /> <br /> <br />
+        
+            {/* {items.map((content) => {
                 // console.log('map', content.id, index);
                 return (
                 <Item 
@@ -39,8 +45,36 @@ return (
                         cid={content.id}
                         />
                         )
-            })}
-        <SearchForm items={items}/>
+            })} */}
+        <SearchForm items={items} toggleSearch={toggleSearch}/> <br />
+        {searched.length > 0 &&
+        searched.map((content) => {
+          return (
+            <Item 
+            key={content.id} 
+            name={content.name}
+            description={content.description} 
+            price={content.price} 
+            location={content.location} 
+            category={content.category}  
+            cid={content.id}
+            />
+          );
+        })}
+      {searched.length === 0 &&
+        items.map((content) => {
+          return (
+            <Item 
+            key={content.id} 
+            name={content.name}
+            description={content.description} 
+            price={content.price} 
+            location={content.location} 
+            category={content.category}  
+            cid={content.id}
+            />
+          );
+        })}
 
 
     </div>
