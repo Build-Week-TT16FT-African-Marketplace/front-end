@@ -7,6 +7,7 @@
 
 .signup-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 75vh;
@@ -40,8 +41,8 @@
 };
 
 /********* BUTTON ************/
-
-.button:disabled {
+/** SIGNUP **/
+.signup-button:disabled {
   border-radius: 10px;
   margin-bottom: 2%;
   padding: 2% 10%;
@@ -49,6 +50,7 @@
   font-weight: bold;
   background-color: #ed49335d;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .signup-button {
@@ -60,4 +62,32 @@
   background-color: #ed4933;
   box-shadow: none;
   color: #ffffff;
+  cursor: pointer;
+}
+
+
+/************
+*** LOGIN ***
+************/
+.login-button:disabled {
+  border-radius: 10px;
+  margin-bottom: 2%;
+  padding: 2% 10%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #ed49335d;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.login-button {
+  border-radius: 10px;
+  margin-bottom: 2%;
+  padding: 2% 10%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #ed4933;
+  box-shadow: none;
+  color: #ffffff;
+  cursor: pointer;
 }
