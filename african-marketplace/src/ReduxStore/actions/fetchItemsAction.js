@@ -33,7 +33,8 @@ export const addProduct = (formValues, setFormVal, initVal) => (dispatch) => {
       .post(`/items/additem`, formValues)
       .then((res) => {
         dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data });
-        fetchItems();
+        window.location.reload();
+        // fetchItems();
       })
       .catch((err) => {
         dispatch({ type: ADD_ITEM_ERROR, payload: err });
@@ -47,7 +48,7 @@ export const addProduct = (formValues, setFormVal, initVal) => (dispatch) => {
       .delete(`/items/${id}`)
       .then((res) => {
         dispatch({ type: DEL_ITEM_SUCCESS, payload: res.data });
-        fetchItems();
+        window.location.reload();
       })
       .catch((err) => {
         dispatch({ type: DEL_ITEM_ERROR, payload: err });
@@ -62,6 +63,7 @@ export const updateProduct = (id, formValues) => (dispatch) => {
       .then((res) => {
         // res.data.id = parseInt(res.data.id);
         dispatch({ type: UPDATE_ITEM_SUCCESS, payload: formValues });
+        window.location.reload();
       })
       .catch((err) => {
         dispatch({ type: UPDATE_ITEM_ERROR, payload: err });
