@@ -22,7 +22,6 @@ const initialFormErrors = {
   password: '',
 }
 const initialUsers = [];
-const initialDisabled = true;
 
 function Signup(props) {
 
@@ -31,7 +30,7 @@ function Signup(props) {
   const [ signups, setSignups ] = useState(initialUsers);
   const [ formValues, setFormValues ] = useState(initialFormValues);
   const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ disabled, setDisabled ] = useState(initialDisabled)
+  const [ disabled, setDisabled ] = useState(true)
 
   /*** Begin Functions  ***/
 
@@ -124,7 +123,7 @@ useEffect(() => {
     setDisabled(!valid);
   });
 },
-[ formValues ])
+[ formValues ]);
 
 
   return (

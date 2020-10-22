@@ -143,7 +143,7 @@ function Login(){
           />
         </label> */}
         </div>
-        <div>
+        <div className='button-container'>
           <button className='login-button' disabled={disabled}>Login</button>
         </div>
       </form>
