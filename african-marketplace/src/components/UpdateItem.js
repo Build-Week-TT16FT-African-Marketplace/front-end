@@ -117,7 +117,7 @@ const UpdateItem = (props) => {
           /> <br /> <br />
         </div>
 
-        <button type="submit">
+        <button onClick={handleClose} type="submit">
           Submit
         </button>
       </form>
