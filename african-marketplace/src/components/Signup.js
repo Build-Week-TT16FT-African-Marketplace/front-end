@@ -129,6 +129,12 @@ useEffect(() => {
 
   return (
     <section className='signup-section'>
+      <div>
+        {formErrors.username}
+      </div>
+      <div>
+        {formErrors.password}
+      </div>
       <form className='signup-form' onSubmit={onSubmit}>
         <h2>Sign Up</h2>
         <hr className='signup-hr' />
@@ -169,6 +175,7 @@ useEffect(() => {
             className='signup-textform'
             variant="outlined"
             name="password"
+            type='password'
             value={formValues.password}
             placeholder="Password"
             onChange={onChange}
@@ -201,7 +208,7 @@ useEffect(() => {
         </div>
 
         <div>
-          <button className='signup-button'disabled={disabled}>
+          <button className='signup-button' disabled={disabled}>
             Create Account
           </button>
         </div>
