@@ -20,24 +20,18 @@
   border-radius: 15px;
 }
 
-.signup-hr {
-  color: lightblue;
-}
-
 .textForm-containers {
   display: flex;
   flex-direction: column;
 }
 
 .radio-container {
-  margin: 2% 0;
+  margin: 2% 0; /** SPACING BETWEEN RADIO & BUTTON/FORMS
 }
 
-.signup-label-radio {
-  margin-top: 100px;
-}
+
 .radio-label {
-  font-size: 22px;
+  font-size: 22px; /** RADIO FONT SIZE **/
 };
 
 /********* BUTTON ************/
@@ -90,4 +84,8 @@
   box-shadow: none;
   color: #ffffff;
   cursor: pointer;
+}
+
+.button-container {
+  margin: 4% 0;
 }
