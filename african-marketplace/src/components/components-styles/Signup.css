@@ -1,0 +1,63 @@
+/*****************
+*****CLASSES******
+*****************/
+.signup-textform {
+  padding-right: 20%;
+}
+
+.signup-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 100%;
+}
+
+.signup-form {
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.signup-hr {
+  color: lightblue;
+}
+
+.textForm-containers {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-container {
+  margin: 2% 0;
+}
+
+.signup-label-radio {
+  margin-top: 100px;
+}
+.radio-label {
+  font-size: 22px;
+};
+
+/********* BUTTON ************/
+
+.button:disabled {
+  border-radius: 10px;
+  margin-bottom: 2%;
+  padding: 2% 10%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #ed49335d;
+  color: #ffffff;
+}
+
+.signup-button {
+  border-radius: 10px;
+  margin-bottom: 2%;
+  padding: 2% 10%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #ed4933;
+  box-shadow: none;
+  color: #ffffff;
+}

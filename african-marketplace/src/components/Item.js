@@ -7,13 +7,13 @@ import UpdateItem from './UpdateItem'
 const Item = (props) => {
   const classes = useStyles();
 return (
-  <div className={classes.div} dataset={props.pid}>
+  <div className={classes.div} dataset={props.cid}>
       <h2 className={classes.h2}>{props.name}</h2>
       <p>{props.description}</p>
       <h3>${props.price}</h3>
       <h3>{props.location}</h3>
       <h3>{props.category}</h3>
-      <DeleteItem />
+      <DeleteItem cid={props.cid} />
       <UpdateItem data={props} />
   </div>
 
