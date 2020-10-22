@@ -14,6 +14,7 @@ export {
   ADD_ITEM_SUCCESS,
   ADD_ITEM_ERROR,
   addProduct,
+  UPDATE_ITEM_START,
   UPDATE_ITEM_SUCCESS,
   UPDATE_ITEM_ERROR,
   updateProduct,

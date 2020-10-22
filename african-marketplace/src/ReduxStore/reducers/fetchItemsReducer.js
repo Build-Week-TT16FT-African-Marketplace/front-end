@@ -5,6 +5,7 @@ import {
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
   ADD_ITEM_ERROR,
+  UPDATE_ITEM_START,
   UPDATE_ITEM_SUCCESS,
   DEL_ITEM_START, 
   DEL_ITEM_SUCCESS,
@@ -12,12 +13,13 @@ import {
 
 const initialState = {
   forSale: [],
-  newItem: {
+  Item: {
     name: '',
     description: '',
     price: '',
     location: '',
     category: '',
+    id: '',
   },
   isLoading: false,
   error: "",
@@ -60,14 +62,22 @@ export const fetchItems = (state = initialState, { type, payload }) => {
         error: payload,
       };
 
+      case UPDATE_ITEM_START:
+      console.log("update start:", state.forSale)
+      return {
+        ...state
+      }
+
     case UPDATE_ITEM_SUCCESS:
-      const updatedIndex = state.forSale.findIndex(
-        (obj) => obj.id === payload.id
-      );
-      state.forSale.splice(updatedIndex, 1);
       return {
         ...state,
-        forSale: [payload, ...state.forSale],
+        forSale: state.forSale.map(item => {
+          if(item.id!== payload.id) {
+            return item;
+          } else {
+            return payload;
+          }
+        }),
       };
       // case DEL_ITEM_SUCCESS:
       //   return {

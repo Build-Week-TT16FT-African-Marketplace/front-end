@@ -6,6 +6,7 @@ export const FETCH_ITEMS_DATA_ERROR = "FETCH_ITEMS_DATA_ERROR";
 export const ADD_ITEM_START = "ADD_ITEM_START"
 export const ADD_ITEM_SUCCESS = "ADD_ITEM_SUCCESS";
 export const ADD_ITEM_ERROR = "ADD_ITEM_ERROR";
+export const UPDATE_ITEM_START = "UPDATE_ITEM_START";
 export const UPDATE_ITEM_SUCCESS = "UPDATE_ITEM_SUCCESS";
 export const UPDATE_ITEM_ERROR = "UPDATE_ITEM_ERROR";
 export const DEL_ITEM_START = "DEL_ITEM_START"
@@ -46,6 +47,7 @@ export const addProduct = (formValues, setFormVal, initVal) => (dispatch) => {
       .delete(`/items/${id}`)
       .then((res) => {
         dispatch({ type: DEL_ITEM_SUCCESS, payload: res.data });
+        fetchItems();
       })
       .catch((err) => {
         dispatch({ type: DEL_ITEM_ERROR, payload: err });
@@ -53,11 +55,13 @@ export const addProduct = (formValues, setFormVal, initVal) => (dispatch) => {
   };
 
 export const updateProduct = (id, formValues) => (dispatch) => {
+  console.log("this is the id you are targetting:", id)
+  dispatch({type:UPDATE_ITEM_START})
     axiosWithAuth()
       .put(`/items/${id}`, formValues)
       .then((res) => {
-        res.data.id = parseInt(res.data.id);
-        dispatch({ type: UPDATE_ITEM_SUCCESS, payload: res.data });
+        // res.data.id = parseInt(res.data.id);
+        dispatch({ type: UPDATE_ITEM_SUCCESS, payload: formValues });
       })
       .catch((err) => {
         dispatch({ type: UPDATE_ITEM_ERROR, payload: err });
