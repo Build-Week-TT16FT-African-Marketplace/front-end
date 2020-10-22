@@ -1,32 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import Button from "@material-ui/core/Button";
 
- function SearchForm () {
 
-     const onSubmit = (event) => {
+ function SearchForm (items) {
+
+     const [search, setSearch] = useState("")
+
+    if( search !== "" && items.location.toLowerCase().filter( search.toLowerCase() )){
+        return null;
+    }
+
+    const handleSearchChange = (event) => {
+        setSearch(event.target.value);
+    };
+    
+    const onSubmit = (event) => {
         event.preventDefault();
     }
 
     return(
-        <div style={{ width: 300}}>
+        <div>
         <form onSubmit={onSubmit}>
-
-            <Autocomplete
-                freeSolo="true"
-                id="autocomplete"
-                autoSelect="true"
-                // replace testProduce
-                options={testProduce.filter((option) => option.name)}
-                renderInput={params => (
-                    <TextField {...params}
-                    label="Search"
-                    margin="normal"
-                    variant="outlined"
-                    InputProps={{ ...params.InputProps, type: "search"}}
-                    />
-                )}
+            <TextField 
+                label="Search"
+                onChange={handleSearchChange}
+                variant="outlined"
             />
             <Button variant="contained" type="submit">Search</Button>
         </form>
