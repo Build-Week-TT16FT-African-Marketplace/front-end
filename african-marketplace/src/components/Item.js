@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   div: {
     margin: "5% auto",
     background: "rgb(179, 140, 68, .6)",
-    width: "55%",
+    width: "45%",
     borderRadius: "5px",
     padding: "5% 0",
   },
@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     background: "white",
     borderRadius: "5px",
     width: "50%",
-    margin: '0 auto'
+    margin: '0 auto',
+    color: "black",
   },
   p: {
     margin: "2%",

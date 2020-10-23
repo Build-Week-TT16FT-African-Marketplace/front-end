@@ -1,21 +1,28 @@
 /* Styles for Market Page here */
 
-/* list item styles */
-.newItemForm{
-    background: rgb(33, 178, 166);
-    padding: 1%;
-    color: white;
+/*  general styles */
+body{
+    background: rgb(43, 52, 61);
+    color: white; 
 }
 
-.newItemForm button{
+body button{
+    margin: 1%;
     padding: 1% 3%;
     border: none;
     border-radius: 5px;
     font-weight: bold;
 }
 
-.newItemForm button:hover{
+body button:hover{
     border: 1px solid black;
+}
+
+/* list item styles */
+.newItemForm{
+    background: rgb(33, 178, 166);
+    padding: 1%;
+    color: white;
 }
 
 /* search area styles */
