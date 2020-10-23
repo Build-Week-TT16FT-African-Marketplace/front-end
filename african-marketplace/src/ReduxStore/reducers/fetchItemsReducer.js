@@ -9,7 +9,7 @@ import {
   UPDATE_ITEM_SUCCESS,
   DEL_ITEM_START, 
   DEL_ITEM_SUCCESS,
-} from "../actions";
+} from "../actions/fetchItemsAction";
 
 const initialState = {
   forSale: [],
@@ -25,7 +25,7 @@ const initialState = {
   error: "",
 };
 
-export const fetchItems = (state = initialState, { type, payload }) => {
+const fetchItems = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_ITEMS_DATA:
       return {
@@ -99,3 +99,5 @@ export const fetchItems = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+export default fetchItems;

@@ -1,69 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import PageviewIcon from "@material-ui/icons/Pageview";
 
- function SearchForm (items) {
+const SearchForm = (props) => {
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState(null);
 
-     const [search, setSearch] = useState("")
-
-    if( search !== "" && items.location.toLowerCase().filter( search.toLowerCase() )){
-        return null;
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+    if (searchInput.length > 0) {
+      const result = props.items.filter((item) => {
+        console.log("LOOK HERE itemname:", item.name)
+        console.log("LOOK HERE searchinput:", searchInput)
+        return item.name.toUpperCase().includes(searchInput.toUpperCase());
+      });
+      setFilteredPosts(result);
     }
+  };
 
-    const handleSearchChange = (event) => {
-        setSearch(event.target.value);
-    };
-    
-    const onSubmit = (event) => {
-        event.preventDefault();
+  useEffect(() => {
+    if (filteredPosts !== null) {
+      props.toggleSearch(filteredPosts);
     }
+  }, [filteredPosts]);
 
-    return(
-        <div>
-        <form className="searchForm" onSubmit={onSubmit}>
-            <TextField 
-                label="Search"
-                onChange={handleSearchChange}
-                variant="outlined"
-            />
-            <Button variant="contained" type="submit">Search</Button>
-        </form>
+  return (
+    <div>
+      <TextField
+        type="text"
+        placeholder="Search"
+        value={searchInput}
+        onChange={handleInputChange}
+        variant="outlined"
+      />
     </div>
-    )
+  );
 };
 
 export default SearchForm;
-//remove test data later
-const testProduce = [
-    {
-        id: 1,
-        name: "corn",
-        description: "an ear of corn",
-        price: "$.46",
-        location: "Nairobi",
-        category: "vegetable",
-        URL: "URL",
-        user_id: "userId"
-    },
-    {
-        id: 2,
-        name: "eggplant",
-        description: "an eggplant",
-        price: "$.75",
-        location: "Nairobi",
-        category: "vegetable",
-        URL: "URL",
-        user_id: "userId"
-    },
-    {
-        id: 3,
-        name: "carrot",
-        description: "a carrot",
-        price: "$.50",
-        location: "Mogadishu",
-        category: "vegetable",
-        URL: "URL",
-        user_id: "userId"
-    }
-];

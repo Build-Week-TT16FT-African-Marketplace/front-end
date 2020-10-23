@@ -10,6 +10,7 @@ import styles from "./components-styles/marketpage.css"
 const MainMarketPage = () => {
 
 const [ items, setItems ] = useState([])
+const [searched, setSearched] = useState([]);
 
     useEffect(() => {
         axiosWithAuth()
@@ -23,6 +24,10 @@ const [ items, setItems ] = useState([])
         })
     }, []);
 
+    const toggleSearch = (items) => {
+        setSearched(items);
+      };
+
 return (
     <div className="marketContainer">
         <h1>SAUTI EAST AFRICA MARKETPLACE</h1>
@@ -33,19 +38,34 @@ return (
         </div>
         <h2>Browse:</h2>
             <p>Take a look at all the listings our sellers have created!</p>
-            {items.map((content) => {
-                // console.log('map', content.id, index);
-                return (
-                    <Item 
-                    key={content.id} 
-                    name={content.name}
-                    description={content.description} 
-                        price={content.price} 
-                        location={content.location} 
-                        category={content.category}  
-                        cid={content.id}
-                        />
-                        )
+        <SearchForm items={items} toggleSearch={toggleSearch}/> <br />
+        {searched.length > 0 &&
+        searched.map((content) => {
+          return (
+            <Item 
+            key={content.id} 
+            name={content.name}
+            description={content.description} 
+            price={content.price} 
+            location={content.location} 
+            category={content.category}  
+            cid={content.id}
+            />
+          );
+        })}
+      {searched.length === 0 &&
+        items.map((content) => {
+          return (
+            <Item 
+            key={content.id} 
+            name={content.name}
+            description={content.description} 
+            price={content.price} 
+            location={content.location} 
+            category={content.category}  
+            cid={content.id}
+            />
+          );
                     })}
         <div className="searchFooter">
             <h3>Search:</h3>
