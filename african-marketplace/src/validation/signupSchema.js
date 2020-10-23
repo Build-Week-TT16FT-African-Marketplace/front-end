@@ -1,13 +1,6 @@
 import * as yup from 'yup';
 
 export default yup.object().shape({
-  // firstname: yup
-  // .string()
-  // .required('First name is required'),
-
-  // lastname: yup
-  // .string()
-  // .required('Last name is required'),
 
   username: yup
   .string()
@@ -21,5 +14,4 @@ export default yup.object().shape({
   department: yup
   .string()
   .oneOf(['buyer', 'seller'], 'Please select a department')
-
 })

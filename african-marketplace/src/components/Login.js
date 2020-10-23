@@ -5,6 +5,8 @@ import * as yup from "yup";
 import schema from "../validation/loginSchema";
 import { connect } from "react-redux";
 import { useHistory } from 'react-router-dom'
+import styles from './components-styles/Signup.css'
+import TextField from "@material-ui/core/TextField";
 // Styled components?
 
 // Initial values.
@@ -96,33 +98,57 @@ function Login(){
 
   ///// FORM /////
   return (
-    <form className="loginForm" onSubmit={onSubmit}>
-      <h3>Please sign in to view your account.</h3>
+    <section className='signup-section'>
+      <form className="signup-form" onSubmit={onSubmit}>
+        <h2>Please sign in to view your account.</h2>
+        <hr />
+        <div className='textForm-containers'>
+        <TextField
+              className='login-textform'
+              variant="outlined"
+              name="username"
+              type="string"
+              value={loginValues.username}
+              placeholder="Username"
+              onChange={onChange}
+            />
+            <TextField
+              className='login-textform'
+              variant="outlined"
+              name="password"
+              type="password"
+              value={loginValues.password}
+              placeholder="Password"
+              onChange={onChange}
+            />
+        {/* <label>
+          {" "}
+          Username:
+          <input
+            name="username"
+            type="string"
+            value={loginValues.username}
+            onChange={onChange}
+          />
+        </label>
 
-      <label>
-        {" "}
-        Username:
-        <input
-          name="username"
-          type="string"
-          value={loginValues.username}
-          onChange={onChange}
-        />
-      </label>
+        <label>
+          {" "}
+          Password:
+          <input
+            name="password"
+            type="password"
+            value={loginValues.password}
+            onChange={onChange}
+          />
+        </label> */}
+        </div>
+        <div className='button-container'>
+          <button className='login-button' disabled={disabled}>Login</button>
+        </div>
+      </form>
+    </section>
 
-      <label>
-        {" "}
-        Password:
-        <input
-          name="password"
-          type="password"
-          value={loginValues.password}
-          onChange={onChange}
-        />
-      </label>
-
-      <button disabled={disabled}>Login</button>
-    </form>
   );
 }
 

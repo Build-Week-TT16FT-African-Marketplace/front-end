@@ -22,7 +22,6 @@ const initialFormErrors = {
   password: '',
 }
 const initialUsers = [];
-const initialDisabled = true;
 
 function Signup(props) {
 
@@ -31,7 +30,7 @@ function Signup(props) {
   const [ signups, setSignups ] = useState(initialUsers);
   const [ formValues, setFormValues ] = useState(initialFormValues);
   const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ disabled, setDisabled ] = useState(initialDisabled)
+  const [ disabled, setDisabled ] = useState(true)
 
   /*** Begin Functions  ***/
 
@@ -124,11 +123,17 @@ useEffect(() => {
     setDisabled(!valid);
   });
 },
-[ formValues ])
+[ formValues ]);
 
 
   return (
     <section className='signup-section'>
+      <div>
+        {formErrors.username}
+      </div>
+      <div>
+        {formErrors.password}
+      </div>
       <form className='signup-form' onSubmit={onSubmit}>
         <h2>Sign Up</h2>
         <hr className='signup-hr' />
@@ -169,6 +174,7 @@ useEffect(() => {
             className='signup-textform'
             variant="outlined"
             name="password"
+            type='password'
             value={formValues.password}
             placeholder="Password"
             onChange={onChange}
@@ -200,8 +206,8 @@ useEffect(() => {
           </label>
         </div>
 
-        <div>
-          <button className='signup-button'disabled={disabled}>
+        <div className='button-container'>
+          <button className='login-button' disabled={disabled}>
             Create Account
           </button>
         </div>
