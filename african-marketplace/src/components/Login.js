@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import schema from "../validation/loginSchema";
-import { connect } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import styles from './components-styles/Signup.css'
 import TextField from "@material-ui/core/TextField";
@@ -121,27 +120,6 @@ function Login(){
               placeholder="Password"
               onChange={onChange}
             />
-        {/* <label>
-          {" "}
-          Username:
-          <input
-            name="username"
-            type="string"
-            value={loginValues.username}
-            onChange={onChange}
-          />
-        </label>
-
-        <label>
-          {" "}
-          Password:
-          <input
-            name="password"
-            type="password"
-            value={loginValues.password}
-            onChange={onChange}
-          />
-        </label> */}
         </div>
         <div className='button-container'>
           <button className='login-button' disabled={disabled}>Login</button>
@@ -152,11 +130,6 @@ function Login(){
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    testing: state.fetchUserData.users,
-  };
-};
-export default connect(mapStateToProps, {})(Login);
+export default Login;
 
 // Create a separate file so that components render on screen?
