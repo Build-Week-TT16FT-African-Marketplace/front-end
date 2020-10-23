@@ -21,7 +21,7 @@ import Button from "@material-ui/core/Button";
 
     return(
         <div>
-        <form onSubmit={onSubmit}>
+        <form className="searchForm" onSubmit={onSubmit}>
             <TextField 
                 label="Search"
                 onChange={handleSearchChange}

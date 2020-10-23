@@ -1,0 +1,37 @@
+/* Styles for Market Page here */
+
+/* list item styles */
+.newItemForm{
+    background: rgb(33, 178, 166);
+    padding: 1%;
+    color: white;
+}
+
+.newItemForm button{
+    padding: 1% 3%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.newItemForm button:hover{
+    border: 1px solid black;
+}
+
+/* search area styles */
+.searchForm{
+    margin: 3% 35%;
+    display: flex;
+    flex-direction: column;
+    width: 30%; 
+}
+
+.searchForm button{
+    margin-top: 2%;
+}
+
+.searchFooter{
+    background: rgb(80, 83, 147);
+    color: white;
+    padding: 1%;
+}

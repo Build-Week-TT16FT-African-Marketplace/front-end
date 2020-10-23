@@ -40,7 +40,7 @@ const NewItem = (props) => {
   
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="newItemForm" onSubmit={handleSubmit}>
         <div>
           <TextField
             name="name"
@@ -88,7 +88,7 @@ const NewItem = (props) => {
         </div>
 
         <button type="submit">
-          Submit
+          SUBMIT
         </button>
       </form>
     </div>

@@ -5,6 +5,7 @@ import Item from './Item';
 import NewItem from './NewItem'
 import SearchForm from "./SearchForm"
 import UpdateItem from './UpdateItem';
+import styles from "./components-styles/marketpage.css"
 
 const MainMarketPage = () => {
 
@@ -23,11 +24,13 @@ const [ items, setItems ] = useState([])
     }, []);
 
 return (
-    <div>
+    <div className="marketContainer">
         <h1>SAUTI EAST AFRICA MARKETPLACE</h1>
-        <h2>List:</h2>
-            <p>Have an item you'd like to sell? Fill out the form below to create the listing!</p>
-        <NewItem />
+        <div className="newItemForm">
+            <h2>Post:</h2>
+                <p>Have an item you'd like to sell? Fill out the form below to create the listing!</p>
+            <NewItem />
+        </div>
         <h2>Browse:</h2>
             <p>Take a look at all the listings our sellers have created!</p>
             {items.map((content) => {
@@ -44,9 +47,11 @@ return (
                         />
                         )
                     })}
-        <h3>Search:</h3>
-            <p>Don't see what you're looking for? Use the search bar below to track down exactly what you need!</p>
-        <SearchForm items={items}/>
+        <div className="searchFooter">
+            <h3>Search:</h3>
+                <p>Don't see what you're looking for? Use the search bar below to track down exactly what you need!</p>
+            <SearchForm items={items}/>
+        </div>
     </div>
 )
 }
