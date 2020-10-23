@@ -38,7 +38,6 @@ return (
         </div>
         <h2>Browse:</h2>
             <p>Take a look at all the listings our sellers have created!</p>
-        <SearchForm items={items} toggleSearch={toggleSearch}/> <br />
         {searched.length > 0 &&
         searched.map((content) => {
           return (
@@ -70,7 +69,7 @@ return (
         <div className="searchFooter">
             <h3>Search:</h3>
                 <p>Don't see what you're looking for? Use the search bar below to track down exactly what you need!</p>
-            <SearchForm items={items}/>
+            <SearchForm items={items} toggleSearch={toggleSearch}/>
         </div>
     </div>
 )
