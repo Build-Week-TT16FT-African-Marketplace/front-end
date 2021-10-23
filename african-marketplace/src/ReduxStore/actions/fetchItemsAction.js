@@ -28,18 +28,18 @@ export const fetchItems = () => {
 };
 
 export const addProduct = (formValues, setFormVal, initVal) => (dispatch) => {
-    dispatch({type:ADD_ITEM_START})
-    axiosWithAuth()
-      .post(`/items/additem`, formValues)
-      .then((res) => {
-        dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data });
-        fetchItems();
-      })
-      .catch((err) => {
-        dispatch({ type: ADD_ITEM_ERROR, payload: err });
-      })
-      .finally(() => setFormVal(initVal))
-  };
+  dispatch({ type: ADD_ITEM_START });
+  axiosWithAuth()
+    .post(`/items/additem`, formValues)
+    .then((res) => {
+      dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data });
+      fetchItems();
+    })
+    .catch((err) => {
+      dispatch({ type: ADD_ITEM_ERROR, payload: err });
+    })
+    .finally(() => setFormVal(initVal));
+};
 
   export const deleteProduct = (id) => (dispatch) => {
     dispatch({type:DEL_ITEM_START})
